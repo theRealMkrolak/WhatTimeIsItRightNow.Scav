@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<body onload="startTime()">
+
+<div id="continer">
+  <div id="title">WhatTimeIsItRightNow.scav.info</h2>
+
+  <div id="txt"></div>
+</div>
+
+
+
+<script>
+
+
+function startTime() {
+  const today = new Date();
+  var options = { weekday: 'long', month: 'long', day: 'numeric', hour:'numeric',minute:'numeric',second:'numeric' };
+  const scavNewYear = new Date("May 5, 2022 00:00:00");
+  const scavNYEyear = new Date("May 8, 2022 19:30:00");
+  const CoviNewYear = new Date("Jan 1, 2020 00:00:00");
+  const newLengthOfYear = 31622400*1000;
+
+  const newMili = (CoviNewYear-0) + (today - scavNewYear)*newLengthOfYear/(scavNYEyear - scavNewYear);
+
+  const scavDay = new Date(newMili)
+  document.getElementById('txt').innerHTML =  scavDay.toLocaleDateString("en-US", options);
+  setTimeout(startTime, 1000/960);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+body{
+  background-color: #37474f;
+}
+*{
+  text-align: center;
+  color: #fbc02d;
+  font-family: 'Major Mono Display', monospace;
+
+}
+
+#continer{
+  width: 100wv;
+}
+
+#title{
+  font-size: 25px;
+}
+
+#txt{
+  font-size: 100px; !important
+}
+</style>
+
+</body>
+</html>
